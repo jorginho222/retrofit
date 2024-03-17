@@ -1,11 +1,11 @@
 package com.example.retrofit
 
-class CustomerRepository(
-    private val api: BPApi
+class NodeRepository(
+    private val api: NodeApi
 ) {
-    suspend fun getCustomers(): Result<List<CustomerItem>> {
+    suspend fun getMovies(): Result<List<NodeItem>> {
         return try {
-            val response = api.getCustomers()
+            val response = api.getMovies()
             Result.success(response)
         } catch (e: Exception) {
             return Result.failure(e)

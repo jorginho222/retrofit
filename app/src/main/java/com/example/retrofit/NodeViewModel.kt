@@ -7,18 +7,14 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.launch
 
-class CustomersViewModel(
-    private val repository: CustomerRepository = CustomerRepository(BPApi.instance)
+class NodeViewModel(
+    private val repository: NodeRepository = NodeRepository(NodeApi.instance)
 ): ViewModel() {
-    var state by mutableStateOf(CustomerState())
-        private set
 
     init {
         viewModelScope.launch {
-            repository.getCustomers().onSuccess {
-                state = state.copy(
-                    customers = it
-                )
+            repository.getMovies().onSuccess {
+                println()
             }.onFailure {
                 println()
             }
